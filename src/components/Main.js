@@ -15,12 +15,18 @@ function Main(props) {
       setUserDescription(res.about);
       setUserAvatar(res.avatar);
     })
+    .catch((err) => {
+      console.log(err);
+    })
   },[])
 
   useEffect(() => {
     api.getInitialCards()
     .then(res => {
       setCards(res);
+    })
+    .catch((err) => {
+      console.log(err);
     })
   },[])
 
