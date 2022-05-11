@@ -16,7 +16,7 @@ function AddPlacePopup(props) {
   useEffect(() => {
     setNameValue('');
     setLinkValue('');
-  }, [props]);
+  }, [props.isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();

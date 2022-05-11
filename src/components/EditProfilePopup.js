@@ -10,7 +10,7 @@ function EditProfilePopup(props) {
   useEffect(() => {
     setNameValue(currentUser.name);
     setDescriptionValue(currentUser.about);
-  }, [currentUser]); 
+  }, [currentUser, props.isOpen]); 
 
   function handleNameChange(e) {
     setNameValue(e.target.value);
@@ -30,9 +30,9 @@ function EditProfilePopup(props) {
 
   return (
   <PopupWithForm name="profile" title="Редактировать профиль" isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleSubmit}>
-    <input id="name-input" className="popup__input popup__input_type_name" type="text" name="userName" required minLength="2" maxLength="40" value={nameValue} onChange={handleNameChange} />
+    <input id="name-input" className="popup__input popup__input_type_name" type="text" name="userName" required minLength="2" maxLength="40" value={nameValue || ''} onChange={handleNameChange} />
     <span className="name-input-error popup__input-error"></span>
-    <input id="job-input" className="popup__input popup__input_type_job" type="text" name="userJob" required minLength="2" maxLength="200" value={descriptionValue} onChange={handleDescriptionChange} />
+    <input id="job-input" className="popup__input popup__input_type_job" type="text" name="userJob" required minLength="2" maxLength="200" value={descriptionValue || ''} onChange={handleDescriptionChange} />
     <span className="job-input-error popup__input-error"></span>
   </PopupWithForm>
   )

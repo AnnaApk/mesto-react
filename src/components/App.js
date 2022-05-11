@@ -27,18 +27,25 @@ function App() {
     })
     .catch((err) => {
       console.log(err);
-    })
-  },[])
-
-  useEffect(() => {
+    });
     api.getUserInfo()
     .then((res) => {
       setCurrentUser(prevState => ({ ...prevState, name: res.name, about: res.about, avatar: res.avatar, _id: res._id }));
     })
     .catch((err) => {
       console.log(err);
-    }) 
-  }, [])
+    })
+  },[])
+
+  // useEffect(() => {
+  //   api.getUserInfo()
+  //   .then((res) => {
+  //     setCurrentUser(prevState => ({ ...prevState, name: res.name, about: res.about, avatar: res.avatar, _id: res._id }));
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   }) 
+  // }, [])
 
   const handleCardLike = (card) => {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
